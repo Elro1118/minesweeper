@@ -26,4 +26,25 @@ body {
   background: black;
   border-radius: 0.5rem;
   padding: 0.3rem;
+  margin: 0.3rem;
+}
+
+td {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  background-color: #ccc;
+  border: 2px solid rgb(153, 143, 143);
+}
+header {
+  text-align: center;
+}
+
+.game-board {
+  background-color: #ccc;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+.state-game {
+  text-align: center;
 }
