@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Message from './components/Message'
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +41,6 @@ class App extends Component {
         }
       )
       .then(resp => {
-        console.log({ resp })
         this.setState({
           game: resp.data
         })
@@ -61,7 +61,6 @@ class App extends Component {
         }
       )
       .then(resp => {
-        console.log({ resp })
         this.setState({
           game: resp.data
         })
@@ -83,6 +82,7 @@ class App extends Component {
           <header>MINESWEEPER</header>
           <div className="bombs-time-section">
             <p className="label-section">{this.state.game.mines}</p>
+            <Message state={this.state.game.state} />
             <p className="label-section">00:59</p>
           </div>
           <table>
@@ -95,12 +95,14 @@ class App extends Component {
                         <td
                           key={j}
                           className={
-                            col === ' ' ? 'button-new-game' : 'button-reveled'
+                            col === ' ' || col === 'F'
+                              ? 'button-new-game'
+                              : 'button-reveled'
                           }
                           onClick={() => this.checkCell(i, j)}
                           onContextMenu={event => this.flagCell(event, i, j)}
                         >
-                          {col !== '*' ? col : '💣'}
+                          {col === '*' ? '💣' : col === 'F' ? '🚩' : col}
                         </td>
                       )
                     })}
