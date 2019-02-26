@@ -68,28 +68,6 @@ class App extends Component {
       })
   }
 
-  playCell = (event, row, col) => {
-    // event.preventDefault()
-    let typePlay = event.button === 0 ? 'check' : 'flag'
-    console.log({ typePlay })
-    axios
-      .post(
-        `https://minesweeper-api.herokuapp.com/games/${
-          this.state.game.id
-        }/${typePlay}`,
-        {
-          id: this.state.game.id,
-          row: row,
-          col: col
-        }
-      )
-      .then(response => {
-        this.setState({
-          game: response.data
-        })
-      })
-  }
-
   render() {
     return (
       <>
@@ -104,7 +82,7 @@ class App extends Component {
         <section className="game-board">
           <header>MINESWEEPER</header>
           <div className="bombs-time-section">
-            <p className="label-section">BOM</p>
+            <p className="label-section">{this.state.game.mines}</p>
             <p className="label-section">00:59</p>
           </div>
           <table>
@@ -116,10 +94,11 @@ class App extends Component {
                       return (
                         <td
                           key={j}
-                          className="button-section"
+                          className={
+                            col === ' ' ? 'button-new-game' : 'button-reveled'
+                          }
                           onClick={() => this.checkCell(i, j)}
                           onContextMenu={event => this.flagCell(event, i, j)}
-                          // onMouseDown={event => this.playCell(event, i, j)}
                         >
                           {col !== '*' ? col : '💣'}
                         </td>

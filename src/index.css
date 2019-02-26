@@ -26,16 +26,32 @@ body {
   background: black;
   border-radius: 0.5rem;
   padding: 0.3rem;
-  margin: 0.3rem;
+  margin: 0.5rem;
+  width: 3rem;
+  text-align: center;
 }
 
-td {
+table {
+  margin: 0.5rem;
+}
+
+.button-new-game {
   cursor: pointer;
   width: 1rem;
   height: 1rem;
   background-color: #ccc;
-  border: 2px solid rgb(153, 143, 143);
+  border: 0.1rem solid rgb(153, 143, 143);
+  box-shadow: 0.1rem 0.2rem #888888;
 }
+
+.button-reveled {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  background-color: #ccc;
+  border: 0.1rem solid rgb(153, 143, 143);
+}
+
 header {
   text-align: center;
 }
