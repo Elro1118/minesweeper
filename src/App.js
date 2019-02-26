@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './components/Message'
+import EmojiMessage from './components/EmojiMessage'
 
 class App extends Component {
   constructor(props) {
@@ -70,19 +71,12 @@ class App extends Component {
   render() {
     return (
       <>
-        {this.state.game.state === 'new' ||
-        this.state.game.state === 'playing' ? (
-          <></>
-        ) : this.state.game.state === 'won' ? (
-          <h2 className="state-game">WON!</h2>
-        ) : (
-          <h2 className="state-game">LOST!</h2>
-        )}
+        <Message state={this.state.game.state} />
         <section className="game-board">
           <header>MINESWEEPER</header>
           <div className="bombs-time-section">
             <p className="label-section">{this.state.game.mines}</p>
-            <Message state={this.state.game.state} />
+            <EmojiMessage state={this.state.game.state} />
             <p className="label-section">00:59</p>
           </div>
           <table>
