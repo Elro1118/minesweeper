@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './components/Message'
 import EmojiMessage from './components/EmojiMessage'
+import Cell from './components/Cell'
 
 class App extends Component {
   constructor(props) {
@@ -86,18 +87,14 @@ class App extends Component {
                   <tr key={i}>
                     {row.map((col, j) => {
                       return (
-                        <td
+                        <Cell
                           key={j}
-                          className={
-                            col === ' ' || col === 'F'
-                              ? 'button-new-game'
-                              : 'button-reveled'
-                          }
-                          onClick={() => this.checkCell(i, j)}
-                          onContextMenu={event => this.flagCell(event, i, j)}
-                        >
-                          {col === '*' ? '💣' : col === 'F' ? '🚩' : col}
-                        </td>
+                          indexRow={i}
+                          indexCell={j}
+                          valueCell={col}
+                          checkCell={() => this.checkCell(i, j)}
+                          flagCell={this.flagCell}
+                        />
                       )
                     })}
                   </tr>
