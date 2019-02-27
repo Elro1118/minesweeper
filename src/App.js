@@ -15,29 +15,27 @@ class App extends Component {
     this.setState({
       optionSelected: event.target.value
     })
-    console.log(this.state.optionSelected)
   }
   render() {
     return (
       <>
         {this.state.optionSelected === '' ? (
-          <></>
+          <div className="option-section">
+            <Title articleTitle="Minesweeper 's Options" />
+            {this.state.optionGame.map(([value, text], i) => (
+              <div key={i}>
+                <Option
+                  groupName="typeGame"
+                  valueOption={value}
+                  textOption={text}
+                  onRadioChange={this.onRadioChange}
+                />
+              </div>
+            ))}
+          </div>
         ) : (
           <Game difficulty={this.state.optionSelected} />
         )}
-        <div className="option-section">
-          <Title articleTitle="Minesweeper 's Options" />
-          {this.state.optionGame.map(([value, text], i) => (
-            <div key={i}>
-              <Option
-                groupName="typeGame"
-                valueOption={value}
-                textOption={text}
-                onRadioChange={this.onRadioChange}
-              />
-            </div>
-          ))}
-        </div>
       </>
     )
   }
