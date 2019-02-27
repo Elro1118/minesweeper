@@ -67,8 +67,12 @@ header {
   align-items: center;
   padding: 0.5rem;
 }
-.option-section {
+.option-section,
+.screen-message {
   border: 0.1rem solid rgb(153, 143, 143);
   border-radius: 0.5rem;
   padding: 1rem;
+}
+.screen-message {
+  margin: 1rem;
 }

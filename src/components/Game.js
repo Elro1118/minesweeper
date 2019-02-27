@@ -15,23 +15,40 @@ class Game extends Component {
         board: [[]],
         state: '',
         mines: 0
-        // difficulty: 0
-      }
+      },
+      lastIdGame: 0
     }
   }
   componentDidMount() {
+    let tempLastIdGame = localStorage.getItem('id-game')
+    console.log('mi last id game: ' + tempLastIdGame)
+    tempLastIdGame ? this.getLastGame(tempLastIdGame) : this.addNewGame()
+  }
+
+  addNewGame = () => {
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
         difficulty: this.props.difficulty
       })
       .then(resp => {
-        console.log({ resp })
-
+        localStorage.setItem('id-game', resp.data.id)
         this.setState({
           game: resp.data
         })
       })
   }
+  getLastGame = tempLastIdGame => {
+    axios
+      .get(`https://minesweeper-api.herokuapp.com/games/${tempLastIdGame}`)
+      .then(resp => {
+        console.log({ resp })
+        this.setState({
+          game: resp.data
+        })
+      })
+    console.log(this.state.game)
+  }
+
   checkCell = (row, col) => {
     axios
       .post(
@@ -39,16 +56,37 @@ class Game extends Component {
           this.state.game.id
         }/check`,
         {
-          id: this.state.game.id,
           row: row,
           col: col
         }
       )
       .then(resp => {
+        // clear localstorage if (resp.data.state === 'won' || 'lost)
+        if (resp.data.state === 'won' || resp.data.state === 'lost') {
+          localStorage.removeItem('id-game')
+        }
         this.setState({
           game: resp.data
         })
       })
+
+    // if (this.state.lastIdGame === 0) {
+    //   localStorage.setItem('id-game', this.state.game.id)
+    //   this.setState({ lastIdGame: localStorage.getItem('id-game') })
+    // }
+
+    // if (this.state.game.state === 'lost') {
+    //   localStorage.clear('id-game')
+    //   this.setState({
+    //     game: {
+    //       id: 0,
+    //       board: [[]],
+    //       state: '',
+    //       mines: 0
+    //     },
+    //     lastIdGame: 0
+    //   })
+    // }
   }
 
   flagCell = (event, row, col) => {
@@ -59,7 +97,6 @@ class Game extends Component {
           this.state.game.id
         }/flag`,
         {
-          id: this.state.game.id,
           row: row,
           col: col
         }
@@ -74,7 +111,11 @@ class Game extends Component {
   render() {
     return (
       <>
-        <Message state={this.state.game.state} />
+        <div className="screen-message">
+          <Message state={this.state.game.state} />
+
+          <button onClick={this.addNewGame}>Restart</button>
+        </div>
         <section className="game-board">
           <Title articleTitle="MINESWEEPER" />
           <div className="bombs-time-section">
