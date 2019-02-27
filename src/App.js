@@ -1,111 +1,43 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import Message from './components/Message'
-import Cell from './components/Cell'
+import Game from './components/Game'
 import Title from './components/Title'
-import EmojiMessage from './components/EmojiMessage'
-import Announcement from './components/Announcement'
+import Option from './components/Option'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      game: {
-        id: 0,
-        board: [[]],
-        state: '',
-        mines: 0,
-        difficulty: 0
-      }
+      optionGame: [[0, 'Easy'], [1, 'Intermediate'], [0, 'Expert']],
+      optionSelected: ''
     }
   }
-  componentDidMount() {
-    axios
-      .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.state.difficulty
-      })
-      .then(resp => {
-        console.log({ resp })
-
-        this.setState({
-          game: resp.data
-        })
-      })
+  onRadioChange = event => {
+    this.setState({
+      optionSelected: event.target.value
+    })
+    console.log(this.state.optionSelected)
   }
-  checkCell = (row, col) => {
-    axios
-      .post(
-        `https://minesweeper-api.herokuapp.com/games/${
-          this.state.game.id
-        }/check`,
-        {
-          id: this.state.game.id,
-          row: row,
-          col: col
-        }
-      )
-      .then(resp => {
-        this.setState({
-          game: resp.data
-        })
-      })
-  }
-
-  flagCell = (event, row, col) => {
-    event.preventDefault()
-    axios
-      .post(
-        `https://minesweeper-api.herokuapp.com/games/${
-          this.state.game.id
-        }/flag`,
-        {
-          id: this.state.game.id,
-          row: row,
-          col: col
-        }
-      )
-      .then(resp => {
-        this.setState({
-          game: resp.data
-        })
-      })
-  }
-
   render() {
     return (
       <>
-        <Message state={this.state.game.state} />
-        <section className="game-board">
-          <Title articleTitle="MINESWEEPER" />
-          <div className="bombs-time-section">
-            <Announcement notice={this.state.game.mines} />
-            <EmojiMessage state={this.state.game.state} />
-            <Announcement notice="0:59" />
-          </div>
-          <table>
-            <tbody>
-              {this.state.game.board.map((row, i) => {
-                return (
-                  <tr key={i}>
-                    {row.map((col, j) => {
-                      return (
-                        <Cell
-                          key={j}
-                          indexRow={i}
-                          indexCell={j}
-                          valueCell={col}
-                          checkCell={() => this.checkCell(i, j)}
-                          flagCell={this.flagCell}
-                        />
-                      )
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-          <div />
-        </section>
+        {this.state.optionSelected === '' ? (
+          <></>
+        ) : (
+          <Game difficulty={this.state.optionSelected} />
+        )}
+        <div className="option-section">
+          <Title articleTitle="Minesweeper 's Options" />
+          {this.state.optionGame.map(([value, text], i) => (
+            <div key={i}>
+              <Option
+                groupName="typeGame"
+                valueOption={value}
+                textOption={text}
+                onRadioChange={this.onRadioChange}
+              />
+            </div>
+          ))}
+        </div>
       </>
     )
   }

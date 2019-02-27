@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Options extends Component {
+class Option extends Component {
   render() {
     return (
       <>
@@ -8,6 +8,7 @@ class Options extends Component {
           type="radio"
           name={this.props.groupName}
           value={this.props.valueOption}
+          onChange={event => this.props.onRadioChange(event)}
         />
         {this.props.textOption}
       </>
@@ -15,4 +16,4 @@ class Options extends Component {
   }
 }
 
-export default Options
+export default Option
