@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './components/Message'
-import EmojiMessage from './components/EmojiMessage'
 import Cell from './components/Cell'
+import Title from './components/Title'
+import EmojiMessage from './components/EmojiMessage'
+import Announcement from './components/Announcement'
 
 class App extends Component {
   constructor(props) {
@@ -74,11 +76,11 @@ class App extends Component {
       <>
         <Message state={this.state.game.state} />
         <section className="game-board">
-          <header>MINESWEEPER</header>
+          <Title articleTitle="MINESWEEPER" />
           <div className="bombs-time-section">
-            <p className="label-section">{this.state.game.mines}</p>
+            <Announcement notice={this.state.game.mines} />
             <EmojiMessage state={this.state.game.state} />
-            <p className="label-section">00:59</p>
+            <Announcement notice="0:59" />
           </div>
           <table>
             <tbody>
