@@ -25,6 +25,8 @@ class Cell extends Component {
             ? '💣'
             : this.props.valueCell === 'F'
             ? '🚩'
+            : this.props.valueCell === '_'
+            ? ''
             : this.props.valueCell}
         </td>
       </>

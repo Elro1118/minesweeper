@@ -15,8 +15,7 @@ class Game extends Component {
         board: [[]],
         state: '',
         mines: 0
-      },
-      lastIdGame: 0
+      }
     }
   }
   componentDidMount() {
@@ -61,7 +60,6 @@ class Game extends Component {
         }
       )
       .then(resp => {
-        // clear localstorage if (resp.data.state === 'won' || 'lost)
         if (resp.data.state === 'won' || resp.data.state === 'lost') {
           localStorage.removeItem('id-game')
         }
@@ -69,24 +67,6 @@ class Game extends Component {
           game: resp.data
         })
       })
-
-    // if (this.state.lastIdGame === 0) {
-    //   localStorage.setItem('id-game', this.state.game.id)
-    //   this.setState({ lastIdGame: localStorage.getItem('id-game') })
-    // }
-
-    // if (this.state.game.state === 'lost') {
-    //   localStorage.clear('id-game')
-    //   this.setState({
-    //     game: {
-    //       id: 0,
-    //       board: [[]],
-    //       state: '',
-    //       mines: 0
-    //     },
-    //     lastIdGame: 0
-    //   })
-    // }
   }
 
   flagCell = (event, row, col) => {

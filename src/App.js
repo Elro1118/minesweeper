@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.state = {
       optionGame: [[0, 'Easy'], [1, 'Intermediate'], [0, 'Expert']],
-      optionSelected: ''
+      optionSelected: '',
+      oldIdGame: localStorage.getItem('id-game')
     }
   }
   onRadioChange = event => {
@@ -19,7 +20,9 @@ class App extends Component {
   render() {
     return (
       <>
-        {this.state.optionSelected === '' ? (
+        {this.state.oldIdGame ? (
+          <Game />
+        ) : this.state.optionSelected === '' ? (
           <div className="option-section">
             <Title articleTitle="Minesweeper 's Options" />
             {this.state.optionGame.map(([value, text], i) => (
