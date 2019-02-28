@@ -15,19 +15,21 @@ class Game extends Component {
         board: [[]],
         state: '',
         mines: 0
-      }
+      },
+      difficulty: 0
     }
   }
   componentDidMount() {
     let tempLastIdGame = localStorage.getItem('id-game')
-    console.log('mi last id game: ' + tempLastIdGame)
+
+    this.setState({ difficulty: this.props.difficulty })
     tempLastIdGame ? this.getLastGame(tempLastIdGame) : this.addNewGame()
   }
 
   addNewGame = () => {
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.props.difficulty
+        difficulty: this.state.difficulty
       })
       .then(resp => {
         localStorage.setItem('id-game', resp.data.id)
@@ -93,7 +95,6 @@ class Game extends Component {
       <>
         <div className="screen-message">
           <Message state={this.state.game.state} />
-
           <button onClick={this.addNewGame}>Restart</button>
         </div>
         <section className="game-board">
@@ -101,7 +102,6 @@ class Game extends Component {
           <div className="bombs-time-section">
             <Announcement notice={this.state.game.mines} />
             <EmojiMessage state={this.state.game.state} />
-            <Announcement notice="0:59" />
           </div>
           <table>
             <tbody>

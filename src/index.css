@@ -50,6 +50,7 @@ table {
   height: 1.5rem;
   background-color: #ccc;
   border: 0.1rem solid rgb(153, 143, 143);
+  text-align: center;
 }
 
 header {
