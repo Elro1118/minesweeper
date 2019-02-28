@@ -98,10 +98,11 @@ class Game extends Component {
           <button onClick={this.addNewGame}>Restart</button>
         </div>
         <section className="game-board">
-          <Title articleTitle="MINESWEEPER" />
+          <Title articleTitle="MINESWEEPER " />
           <div className="bombs-time-section">
             <Announcement notice={this.state.game.mines} />
             <EmojiMessage state={this.state.game.state} />
+            <Announcement notice={this.state.game.id} />
           </div>
           <table>
             <tbody>
