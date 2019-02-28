@@ -29,7 +29,7 @@ class Game extends Component {
   addNewGame = () => {
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.state.difficulty
+        difficulty: this.props.difficulty
       })
       .then(resp => {
         localStorage.setItem('id-game', resp.data.id)

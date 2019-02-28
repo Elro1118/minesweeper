@@ -6,7 +6,7 @@ class Options extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      optionGame: [[0, 'Easy'], [1, 'Intermediate'], [0, 'Expert']],
+      optionGame: [[0, 'Easy'], [1, 'Intermediate'], [2, 'Expert']],
       optionSelected: ''
     }
   }
@@ -14,6 +14,7 @@ class Options extends Component {
     this.setState({
       optionSelected: event.target.value
     })
+    console.log(this.state.optionSelected)
   }
   render() {
     return (
@@ -21,16 +22,17 @@ class Options extends Component {
         {this.state.optionSelected === '' ? (
           <div className="option-section">
             <Title articleTitle="Minesweeper 's Options" />
-            {this.state.optionGame.map(([value, text], i) => (
-              <div key={i}>
+            <div>
+              {this.state.optionGame.map(([value, text], i) => (
                 <Option
+                  key={i}
                   groupName="typeGame"
                   valueOption={value}
                   textOption={text}
                   onRadioChange={this.onRadioChange}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ) : (
           <Game difficulty={this.state.optionSelected} />
