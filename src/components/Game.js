@@ -90,7 +90,7 @@ class Game extends Component {
 
   home = e => {
     e.preventDefault()
-    window.location = 'http://localhost:3000/'
+    window.location = '~'
   }
 
   render() {
