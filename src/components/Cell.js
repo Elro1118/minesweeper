@@ -23,7 +23,7 @@ class Cell extends Component {
         >
           {this.props.valueCell === '*'
             ? '💣'
-            : this.props.valueCell === 'F'
+            : this.props.valueCell === 'F' || this.props.valueCell === '@'
             ? '🚩'
             : this.props.valueCell === '_'
             ? ''

@@ -21,7 +21,7 @@ class Options extends Component {
       <>
         {this.state.optionSelected === '' ? (
           <div className="option-section">
-            <Title articleTitle="Minesweeper 's Options" />
+            <Title articleTitle="Minesweeper Options" />
             <div>
               {this.state.optionGame.map(([value, text], i) => (
                 <Option

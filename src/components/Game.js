@@ -97,10 +97,14 @@ class Game extends Component {
     return (
       <>
         <div className="screen-message">
-          <h2>MINESWEEPER</h2>
+          <h2>Minesweeper</h2>
           <Message state={this.state.game.state} />
           {/* <button onClick={this.addNewGame}>Restart</button> */}
-          <button onClick={this.home}>Restart</button>
+          {this.state.game.state === 'lost' ? (
+            <button onClick={this.home}>Restart</button>
+          ) : (
+            <></>
+          )}
         </div>
         <section className="game-board">
           <Title articleTitle="MINESWEEPER " />

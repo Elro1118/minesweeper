@@ -80,6 +80,8 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   margin: 1rem;
+}
+
+@media (max-width: 600px) {
 }
