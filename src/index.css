@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8ecc9;
+  background-color: #abd0ce;
 }
 .button-section {
   width: 1rem;
@@ -61,7 +61,7 @@ header {
 
 .game-board {
   background-color: #ccc;
-  border: 0.1rem solid black;
+  border: 0.1rem solid rgb(153, 143, 143);
   border-radius: 0.5rem;
 }
 .state-game {
@@ -74,6 +74,7 @@ header {
   border: 0.1rem solid rgb(153, 143, 143);
   border-radius: 0.5rem;
   padding: 1rem;
+  background: #f0e5de;
 }
 .screen-message {
   display: flex;

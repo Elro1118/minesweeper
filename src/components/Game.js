@@ -90,7 +90,7 @@ class Game extends Component {
 
   home = e => {
     e.preventDefault()
-    window.location = '~/src/components/Options.js'
+    window.location = 'http://localhost:3000/'
   }
 
   render() {
@@ -99,7 +99,6 @@ class Game extends Component {
         <div className="screen-message">
           <h2>Minesweeper</h2>
           <Message state={this.state.game.state} />
-          {/* <button onClick={this.addNewGame}>Restart</button> */}
           {this.state.game.state === 'lost' ? (
             <button onClick={this.home}>Restart</button>
           ) : (
@@ -107,7 +106,6 @@ class Game extends Component {
           )}
         </div>
         <section className="game-board">
-          <Title articleTitle="MINESWEEPER " />
           <div className="bombs-time-section">
             <Announcement notice={this.state.game.mines} />
             <EmojiMessage state={this.state.game.state} />
