@@ -15,14 +15,12 @@ class Game extends Component {
         board: [[]],
         state: '',
         mines: 0
-      },
-      difficulty: 0
+      }
     }
   }
   componentDidMount() {
     let tempLastIdGame = localStorage.getItem('id-game')
 
-    this.setState({ difficulty: this.props.difficulty })
     tempLastIdGame ? this.getLastGame(tempLastIdGame) : this.addNewGame()
   }
 
@@ -90,12 +88,19 @@ class Game extends Component {
       })
   }
 
+  home = e => {
+    e.preventDefault()
+    window.location = '~/src/components/Options.js'
+  }
+
   render() {
     return (
       <>
         <div className="screen-message">
+          <h2>MINESWEEPER</h2>
           <Message state={this.state.game.state} />
-          <button onClick={this.addNewGame}>Restart</button>
+          {/* <button onClick={this.addNewGame}>Restart</button> */}
+          <button onClick={this.home}>Restart</button>
         </div>
         <section className="game-board">
           <Title articleTitle="MINESWEEPER " />

@@ -12,6 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f8ecc9;
 }
 .button-section {
   width: 1rem;
@@ -75,5 +76,10 @@ header {
   padding: 1rem;
 }
 .screen-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   margin: 1rem;
 }
