@@ -11,33 +11,39 @@ body {
   min-height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #abd0ce;
+  justify-content: space-around;
+  background-image: url('./images/wave.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .button-section {
   width: 1rem;
   height: 1rem;
 }
 .bombs-time-section {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .label-section {
   color: red;
   background: black;
   border-radius: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.2rem;
   margin: 0.5rem;
-  width: 3.5rem;
+  width: 3.6rem;
   text-align: center;
 }
 
 table {
+  flex: 1;
   margin: 0.5rem;
 }
 
 .button-new-game {
   cursor: pointer;
+
   width: 1.5rem;
   height: 1.5rem;
   background-color: #ccc;
@@ -46,10 +52,21 @@ table {
 }
 
 .button-reveled {
+  font-size: 0.9rem;
   cursor: pointer;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #ccc;
+  background-color: rgb(143, 200, 238);
+  border: 0.1rem solid rgb(153, 143, 143);
+  text-align: center;
+}
+
+.button-bomb-reveled {
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: red;
   border: 0.1rem solid rgb(153, 143, 143);
   text-align: center;
 }
@@ -60,6 +77,10 @@ header {
 }
 
 .game-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
   background-color: #ccc;
   border: 0.1rem solid rgb(153, 143, 143);
   border-radius: 0.5rem;
@@ -84,5 +105,40 @@ header {
   margin: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-width: 640px) {
+  .screen-message h2 {
+    font-size: 1.2rem;
+  }
+
+  .button-new-game {
+    cursor: pointer;
+    /* width: 1.2rem; */
+    /* height: 1.2rem; */
+
+    background-color: #ccc;
+    border: 0.1rem solid rgb(153, 143, 143);
+    box-shadow: 0.1rem 0.2rem #888888;
+  }
+
+  .button-reveled {
+    font-size: 0.7rem;
+    cursor: pointer;
+
+    /* width: 1.2rem; */
+    /* height: 1.2rem; */
+    background-color: rgb(143, 200, 238);
+    border: 0.1rem solid rgb(153, 143, 143);
+    text-align: center;
+  }
+
+  .button-bomb-reveled {
+    font-size: 0.5rem;
+    cursor: pointer;
+
+    /* width: 1.2rem; */
+    /* height: 1.2rem; */
+    background-color: red;
+    border: 0.1rem solid rgb(153, 143, 143);
+    text-align: center;
+  }
 }

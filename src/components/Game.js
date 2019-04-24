@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './Message'
 import Cell from './Cell'
-import Title from './Title'
 import EmojiMessage from './EmojiMessage'
 import Announcement from './Announcement'
 
@@ -27,7 +26,7 @@ class Game extends Component {
   addNewGame = () => {
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.props.difficulty
+        difficulty: this.props.match.params.id
       })
       .then(resp => {
         localStorage.setItem('id-game', resp.data.id)
@@ -87,10 +86,17 @@ class Game extends Component {
         })
       })
   }
+  home = () => {
+    this.setState({
+      game: {
+        id: 0,
+        board: [[]],
+        state: '',
+        mines: 0
+      }
+    })
 
-  home = e => {
-    e.preventDefault()
-    window.location = '~'
+    this.props.history.push(`/`)
   }
 
   render() {
@@ -99,7 +105,8 @@ class Game extends Component {
         <div className="screen-message">
           <h2>Minesweeper</h2>
           <Message state={this.state.game.state} />
-          {this.state.game.state === 'lost' ? (
+          {this.state.game.state === 'lost' ||
+          this.state.game.state === 'won' ? (
             <button onClick={this.home}>Restart</button>
           ) : (
             <></>
@@ -111,6 +118,7 @@ class Game extends Component {
             <EmojiMessage state={this.state.game.state} />
             <Announcement notice={this.state.game.id} />
           </div>
+
           <table>
             <tbody>
               {this.state.game.board.map((row, i) => {
@@ -133,7 +141,6 @@ class Game extends Component {
               })}
             </tbody>
           </table>
-          <div />
         </section>
       </>
     )

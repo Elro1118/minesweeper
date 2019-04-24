@@ -6,10 +6,11 @@ class Message extends Component {
       <>
         {this.props.state === 'new' || this.props.state === 'playing' ? (
           <></>
-        ) : this.props.state === 'won' ? (
-          <h2 className="state-game">WON!</h2>
         ) : (
-          <h2 className="state-game">LOST!</h2>
+          <h2 className="state-game">
+            {' '}
+            {this.props.state ? this.props.state : <></>}
+          </h2>
         )}
       </>
     )

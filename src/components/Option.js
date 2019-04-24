@@ -8,7 +8,6 @@ class Option extends Component {
           type="radio"
           name={this.props.groupName}
           value={this.props.valueOption}
-          onChange={event => this.props.onRadioChange(event)}
         />
         {this.props.textOption}
       </>

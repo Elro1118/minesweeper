@@ -8,6 +8,8 @@ class Cell extends Component {
           className={
             this.props.valueCell === ' ' || this.props.valueCell === 'F'
               ? 'button-new-game'
+              : this.props.valueCell === '*'
+              ? 'button-bomb-reveled'
               : 'button-reveled'
           }
           onClick={() =>
