@@ -43,26 +43,25 @@ table {
 
 .button-new-game {
   cursor: pointer;
-
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background-color: #ccc;
   border: 0.1rem solid rgb(153, 143, 143);
   box-shadow: 0.1rem 0.2rem #888888;
 }
 
 .button-reveled {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background-color: rgb(143, 200, 238);
   border: 0.1rem solid rgb(153, 143, 143);
   text-align: center;
 }
 
 .button-bomb-reveled {
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   cursor: pointer;
   width: 1.2rem;
   height: 1.2rem;
@@ -106,26 +105,26 @@ header {
 }
 
 @media (max-width: 600px), (max-width: 640px) {
+  body {
+    height: auto;
+    max-width: 100%;
+  }
+
   .screen-message h2 {
     font-size: 1.2rem;
   }
 
   .button-new-game {
     cursor: pointer;
-    /* width: 1.2rem; */
-    /* height: 1.2rem; */
-
     background-color: #ccc;
     border: 0.1rem solid rgb(153, 143, 143);
     box-shadow: 0.1rem 0.2rem #888888;
   }
 
   .button-reveled {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+    padding: 0;
     cursor: pointer;
-
-    /* width: 1.2rem; */
-    /* height: 1.2rem; */
     background-color: rgb(143, 200, 238);
     border: 0.1rem solid rgb(153, 143, 143);
     text-align: center;
@@ -134,9 +133,6 @@ header {
   .button-bomb-reveled {
     font-size: 0.5rem;
     cursor: pointer;
-
-    /* width: 1.2rem; */
-    /* height: 1.2rem; */
     background-color: red;
     border: 0.1rem solid rgb(153, 143, 143);
     text-align: center;

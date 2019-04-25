@@ -112,36 +112,42 @@ class Game extends Component {
             <></>
           )}
         </div>
-        <section className="game-board">
-          <div className="bombs-time-section">
-            <Announcement notice={this.state.game.mines} />
-            <EmojiMessage state={this.state.game.state} />
-            <Announcement notice={this.state.game.id} />
+        {this.state.game.state === '' ? (
+          <div className="alert alert-dark" role="alert">
+            Loading new game...!
           </div>
+        ) : (
+          <section className="game-board">
+            <div className="bombs-time-section">
+              <Announcement notice={this.state.game.mines} />
+              <EmojiMessage state={this.state.game.state} />
+              <Announcement notice={this.state.game.id} />
+            </div>
 
-          <table>
-            <tbody>
-              {this.state.game.board.map((row, i) => {
-                return (
-                  <tr key={i}>
-                    {row.map((col, j) => {
-                      return (
-                        <Cell
-                          key={j}
-                          indexRow={i}
-                          indexCell={j}
-                          valueCell={col}
-                          checkCell={() => this.checkCell(i, j)}
-                          flagCell={this.flagCell}
-                        />
-                      )
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </section>
+            <table>
+              <tbody>
+                {this.state.game.board.map((row, i) => {
+                  return (
+                    <tr key={i}>
+                      {row.map((col, j) => {
+                        return (
+                          <Cell
+                            key={j}
+                            indexRow={i}
+                            indexCell={j}
+                            valueCell={col}
+                            checkCell={() => this.checkCell(i, j)}
+                            flagCell={this.flagCell}
+                          />
+                        )
+                      })}
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </section>
+        )}
       </>
     )
   }
