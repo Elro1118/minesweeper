@@ -104,7 +104,6 @@ class Game extends Component {
       <>
         <div className="screen-message">
           <h2>Minesweeper</h2>
-          <Message state={this.state.game.state} />
           {this.state.game.state === 'lost' ||
           this.state.game.state === 'won' ? (
             <button onClick={this.home}>Restart</button>
