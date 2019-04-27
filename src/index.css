@@ -11,7 +11,7 @@ body {
   min-height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-image: url('./images/wave.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -52,7 +52,7 @@ table {
 }
 
 .button-reveled {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   cursor: pointer;
   width: 1.2rem;
   height: 1.2rem;
@@ -107,7 +107,7 @@ header {
   margin: 1rem;
 }
 
-@media (max-width: 600px), (max-width: 640px) {
+@media (max-width: 640px) {
   body {
     height: auto;
     max-width: 100%;
