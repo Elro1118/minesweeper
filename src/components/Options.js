@@ -17,9 +17,9 @@ class Options extends Component {
       <>
         <div className="option-section">
           <Title articleTitle="Minesweeper Options" />
-          <div>
+          <div className="options-section">
             {this.state.optionGame.map(([value, text], i) => (
-              <Link to={`/Game/${value}`}>
+              <Link to={`/Game/${value}`} className="option-link">
                 <Option
                   key={i}
                   groupName="typeGame"

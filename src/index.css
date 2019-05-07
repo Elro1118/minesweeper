@@ -11,7 +11,8 @@ body {
   min-height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  align-content: center;
+  justify-content: center;
   background-image: url('./images/wave.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,28 +45,28 @@ table {
 
 .button-new-game {
   cursor: pointer;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   background-color: #ccc;
   border: 0.1rem solid rgb(153, 143, 143);
   box-shadow: 0.1rem 0.2rem #888888;
 }
 
 .button-reveled {
-  font-size: 0.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   background-color: rgb(143, 200, 238);
   border: 0.1rem solid rgb(153, 143, 143);
   text-align: center;
 }
 
 .button-bomb-reveled {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   background-color: red;
   border: 0.1rem solid rgb(153, 143, 143);
   text-align: center;
@@ -107,10 +108,27 @@ header {
   margin: 1rem;
 }
 
+.options-section {
+  display: flex;
+  justify-content: space-between;
+}
+.option-link {
+  text-decoration: none;
+  color: #212529;
+  font-size: 1rem;
+}
+
+.option-link:hover {
+  text-decoration: none;
+}
+
+.option-article {
+  font-size: 2rem;
+}
+
 @media (max-width: 640px) {
   body {
-    height: auto;
-    max-width: 100%;
+    background-repeat: repeat;
   }
 
   .screen-message h2 {
@@ -118,26 +136,27 @@ header {
   }
 
   .button-new-game {
-    cursor: pointer;
-    background-color: #ccc;
-    border: 0.1rem solid rgb(153, 143, 143);
-    box-shadow: 0.1rem 0.2rem #888888;
+    font-size: 0.6rem;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 
   .button-reveled {
     font-size: 0.6rem;
-    padding: 0;
-    cursor: pointer;
-    background-color: rgb(143, 200, 238);
-    border: 0.1rem solid rgb(153, 143, 143);
-    text-align: center;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 
   .button-bomb-reveled {
     font-size: 0.5rem;
-    cursor: pointer;
-    background-color: red;
-    border: 0.1rem solid rgb(153, 143, 143);
-    text-align: center;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .option-section {
+    font-size: 0.8rem;
+  }
+  .option-article {
+    font-size: 1.2rem;
   }
 }
